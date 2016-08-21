@@ -4,7 +4,7 @@ class User extends React.Component{
     
     render() {
         return (
-            <h3>ruby hi</h3>
+            <h3>ruby hi today</h3>
         )
     }
 }
