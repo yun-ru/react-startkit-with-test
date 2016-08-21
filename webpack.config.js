@@ -1,18 +1,21 @@
 var path = require('path');
-
 module.exports = {
-    entry: './entry.js',
-    output: {
-        path: path.join(__dirname, '/dist'),
-        filename: 'bundle.js'
+    entry: {
+        app: ['./src/app.js']
     },
-    resolve: {
-        extensions: ['', '.js', '.jsx']
+    output: {
+        path: path.join(__dirname, 'bin'),
+        publicPath: "/assets/",
+        filename: 'app.bundle.js',
     },
     module: {
-        loaders: [
-            { test: /\.js|jsx$/, loaders: ['babel'] }
-        ]
+        loaders: [{
+            test: /\.js|jsx$/,
+            exclude: /node_modules/,
+            loaders: ['babel-loader'],
+        }]
     }
 }
+
+
 

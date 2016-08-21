@@ -1,8 +1,10 @@
 import React from 'react';
 import {render} from 'react-dom';
 
+import User from './components/users';
+
 
 render(
-    <h3>hi ruby chen</h3>,
+    <User></User>,
     document.getElementById("app")
 )
