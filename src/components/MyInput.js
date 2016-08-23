@@ -1,8 +1,7 @@
 import React from 'react';
-import { findDOMNode } from 'react-dom';
 
 
-class User extends React.Component{
+class MyInput extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
@@ -34,4 +33,4 @@ class User extends React.Component{
 }
 
 
-export default User;
+export default MyInput;

@@ -1,16 +1,6 @@
 import React, {Component} from 'react';
 
-import WeekBtns from '../components/WeekBtns';
-
-const RepeatEle = props =>{
-    let arr = [];
-    for(let i=0; i<props.times; i++){
-        arr.push(props.children);
-    }
-    return <div> { arr.map(item=>{ return item }) } </div>
-};
-
-
+import Users from '../components/Users';
 
 class Main extends Component{
     constructor(props) {
@@ -44,27 +34,24 @@ class Main extends Component{
         }
     }
 
-    checkArrSub(arr){
+    checkArrSub(arr,level){
         arr.forEach(item=>{
+            item.level = level;
             this.weeks.push(item);
             if(item.hasOwnProperty("times")){
-                this.checkArrSub(item.times)
+                this.checkArrSub(item.times,level+1)
             }
         })
     }
 
     render() {
 
-        this.checkArrSub(this.state.weeks);
+        this.checkArrSub(this.state.weeks,0);
 
         return (
             <div>
                 <h1>Main</h1>
-
-                <RepeatEle times="3"><p>hi ruby</p></RepeatEle>
-
-                <WeekBtns weeks={this.weeks}/>
-
+                <Users/>
             </div>
         )
     }

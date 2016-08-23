@@ -1,4 +1,5 @@
 import React from 'react';
+import RepeatEle from './utils/RepeatEle';
 
 const Btns = props =>(
     <ul>
@@ -6,7 +7,8 @@ const Btns = props =>(
             props.weeks.map((week,index)=>{
                 return (
                     <li key={index}>
-                        {week.title}
+                        <RepeatEle times={week.level}> --> </RepeatEle>
+                        {week.title},{week.level}
                         <button onClick={props.handleClick.bind(this,index)}>{week.active? "Active": "UnActive"}</button>
                     </li>
                 )
@@ -15,14 +17,11 @@ const Btns = props =>(
     </ul>
 );
 
-const Weeks = props=> <div>{props.weeks.map((w,i)=><p key={i}>{w.title},{w.active+""}</p>)}</div>;
-
-
 
 class WeekBtns extends React.Component{
 
     handleClick(i) {
-        console.log("You clicked: " + this.props.weeks[i].title);
+        this.clickedItem = this.props.weeks[i].title;
         this.setState({weeks: this.props.weeks.map((week,index)=>{
             if(index===i){
                 week.active = !week.active;
@@ -38,7 +37,7 @@ class WeekBtns extends React.Component{
         return (
             <div>
                 <h2>Weeks Buttons</h2>
-                <Weeks weeks={weeks}/>
+                <p>You just clicked: <i>{this.clickedItem? this.clickedItem : null}</i></p>
                 <Btns weeks={weeks} handleClick={this.handleClick.bind(this)} />
             </div>
         )

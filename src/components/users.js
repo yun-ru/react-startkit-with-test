@@ -1,37 +1,56 @@
 import React from 'react';
-import { findDOMNode } from 'react-dom';
-
+var ReactCSSTransitionGroup = require('react-addons-css-transition-group');
 
 class User extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
-            myText: ""
+            users: ['Ruby','Daniel','Bill']
         }
     }
-    componentDidMount() {
-        // const el = findDOMNode(this);
+    handleRemove(i) {
+        console.log(this.state.users[i]);
+        this.setState({users: this.state.users.filter((user,index)=>index!==i)});
+        this.forceUpdate();
     }
-    handleChange(e) {
-        this.setState({myText: e.target.value})
+    handleCreate() {
+        this.setState({users: this.state.users.concat([this.refs.user.value])});
+        this.refs.user.value = "";
+        this.forceUpdate();
     }
-    handleClick() {
-        this.setState({myText: ""},()=>{
-            this.refs.myInput.focus();
-        })
+    handleKeyDown(e) {
+        e.keyCode === 13 && this.handleCreate()
     }
 
+    handleUpdate() {
+        this.forceUpdate(()=>{
+            console.log("updated!")
+        });
+    }
+
+    shouldComponentUpdate(nextProps,nextState) {
+        return false
+    }
+
+
+
     render() {
+        var users = this.state.users.map((item,i)=>{
+            return (
+                <h3 key={i}>{item} <button onClick={this.handleRemove.bind(this,i)}>delete</button></h3>
+            )
+        });
         return (
             <div>
-                <h3>The Text: {this.state.myText}</h3>
-                <p ref="myGood">good</p>
-                <input ref="myInput" value={this.state.myText} onChange={this.handleChange.bind(this)} type="text"/>
-                <button onClick={this.handleClick.bind(this)}>Clear it!</button>
+                <button onClick={this.handleUpdate.bind(this)}>update</button>
+                <input ref="user" type="text" onKeyDown={this.handleKeyDown.bind(this)}/>
+                <button onClick={this.handleCreate.bind(this)}>create!</button>
+                <ReactCSSTransitionGroup transitionName="user" transitionEnterTimeout={200} transitionLeaveTimeout={100}>
+                    {users}
+                </ReactCSSTransitionGroup>
+
             </div>
         )
     }
 }
-
-
 export default User;
