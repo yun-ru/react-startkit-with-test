@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-import Users from '../components/Users';
+import PromiseEvents from '../components/PromiseEvents';
 
 class Main extends Component{
     constructor(props) {
@@ -51,7 +51,7 @@ class Main extends Component{
         return (
             <div>
                 <h1>Main</h1>
-                <Users/>
+                <PromiseEvents/>
             </div>
         )
     }
