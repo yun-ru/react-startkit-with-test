@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 const Btns = props =>(
     <ul>
         {
@@ -22,24 +21,9 @@ const Weeks = props=> <div>{props.weeks.map((w,i)=><p key={i}>{w.title},{w.activ
 
 class WeekBtns extends React.Component{
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            weeks: [
-                {title: "Mon", active: false},
-                {title: "Tue", active: false},
-                {title: "Wed", active: false},
-                {title: "Thu", active: false},
-                {title: "Fri", active: false},
-                {title: "Sat", active: false},
-                {title: "Sun", active: false},
-            ]
-        }
-    }
-
     handleClick(i) {
-        console.log("You clicked: " + this.state.weeks[i].title);
-        this.setState({weeks: this.state.weeks.map((week,index)=>{
+        console.log("You clicked: " + this.props.weeks[i].title);
+        this.setState({weeks: this.props.weeks.map((week,index)=>{
             if(index===i){
                 week.active = !week.active;
                 return week
@@ -50,11 +34,12 @@ class WeekBtns extends React.Component{
     }
 
     render() {
+        const weeks = this.props.weeks;
         return (
             <div>
                 <h2>Weeks Buttons</h2>
-                <Weeks weeks={this.state.weeks}/>
-                <Btns weeks={this.state.weeks} handleClick={this.handleClick.bind(this)} />
+                <Weeks weeks={weeks}/>
+                <Btns weeks={weeks} handleClick={this.handleClick.bind(this)} />
             </div>
         )
     }

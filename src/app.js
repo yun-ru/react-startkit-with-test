@@ -1,16 +1,10 @@
 import React from 'react';
 import {render} from 'react-dom';
 
-import User from './components/Users';
-import NoState from './components/NoState';
-import WeekBtns from './components/WeekBtns';
+import Main from './container/Main';
 
 
 render(
-    <div>
-        <User/>
-        <NoState/>
-        <WeekBtns/>
-    </div>,
+    <Main/>,
     document.getElementById("app")
 )
