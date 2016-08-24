@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 
-import PromiseEvents from '../components/PromiseEvents';
-import Users from '../components/Users';
+import ImmutableDemo from '../components/ImmutableDemo';
 
 class Main extends Component{
     constructor(props) {
@@ -52,7 +51,7 @@ class Main extends Component{
         return (
             <div>
                 <h1>Main</h1>
-                <Users/>
+                <ImmutableDemo/>
             </div>
         )
     }
