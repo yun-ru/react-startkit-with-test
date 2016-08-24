@@ -1,5 +1,6 @@
 import React from 'react';
 var ReactCSSTransitionGroup = require('react-addons-css-transition-group');
+var update = require('react-addons-update');
 
 class User extends React.Component{
     constructor(props) {
@@ -8,9 +9,11 @@ class User extends React.Component{
             users: ['Ruby','Daniel','Bill']
         }
     }
-    handleRemove(i) {
-        console.log(this.state.users[i]);
-        this.setState({users: this.state.users.filter((user,index)=>index!==i)});
+    handleRemove(i) {[]
+        // this.setState(update(this.state.users[i]))
+        // this.setState(update(this.state, {users: {$splice: [[i, 1]]}}));
+        this.setState({users: update(this.state.users,{$splice:[[i,1]]})});
+        // this.setState({users: this.state.users.filter((user,index)=>index!==i)});
         // this.forceUpdate();
     }
     handleCreate() {
@@ -26,6 +29,10 @@ class User extends React.Component{
         this.forceUpdate(()=>{
             console.log("updated!")
         });
+    }
+    componentWillUpdate(nextProp, nextState){
+        console.log(this.state);
+        console.log(nextState);
     }
 
     render() {

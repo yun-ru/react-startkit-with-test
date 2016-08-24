@@ -1,10 +1,5 @@
 import React from 'react';
-var Immutable = require('immutable');
 var update = require('react-addons-update');
-
-
-
-
 
 class User extends React.Component{
 
@@ -13,7 +8,6 @@ class User extends React.Component{
     };
 
     handleNumAdd() {
-        // this.setState(Immutable.fromJS(this.state).set("num",this.state.num+1).toJS());
         this.setState(update(this.state,{num: {$set: this.state.num+1}}))
     }
 
