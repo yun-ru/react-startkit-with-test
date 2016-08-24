@@ -11,12 +11,12 @@ class User extends React.Component{
     handleRemove(i) {
         console.log(this.state.users[i]);
         this.setState({users: this.state.users.filter((user,index)=>index!==i)});
-        this.forceUpdate();
+        // this.forceUpdate();
     }
     handleCreate() {
         this.setState({users: this.state.users.concat([this.refs.user.value])});
         this.refs.user.value = "";
-        this.forceUpdate();
+        // this.forceUpdate();
     }
     handleKeyDown(e) {
         e.keyCode === 13 && this.handleCreate()
@@ -27,12 +27,6 @@ class User extends React.Component{
             console.log("updated!")
         });
     }
-
-    shouldComponentUpdate(nextProps,nextState) {
-        return false
-    }
-
-
 
     render() {
         var users = this.state.users.map((item,i)=>{
