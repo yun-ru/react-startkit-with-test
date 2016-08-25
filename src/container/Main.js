@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 
 import ImmutableDemo from '../components/ImmutableDemo';
 import Users from '../components/Users';
+import Communicate from '../components/Communicate';
 
 class Main extends Component{
     constructor(props) {
@@ -52,7 +53,7 @@ class Main extends Component{
         return (
             <div>
                 <h1>Main</h1>
-                <Users/>
+                <Communicate/>
             </div>
         )
     }
