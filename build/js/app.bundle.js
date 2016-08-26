@@ -65,7 +65,7 @@
 /******/ 	}
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "371646529970f2106fe2"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "7850b027823df44df393"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
 /******/ 	
@@ -30331,7 +30331,6 @@
 	    _createClass(User, [{
 	        key: 'handleRemove',
 	        value: function handleRemove(i) {
-	            [];
 	            // this.setState(update(this.state.users[i]))
 	            // this.setState(update(this.state, {users: {$splice: [[i, 1]]}}));
 	            this.setState({ users: update(this.state.users, { $splice: [[i, 1]] }) });

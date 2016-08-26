@@ -1,6 +1,10 @@
 import React from 'react';
+import {findDOMNode} from 'react-dom';
 var ReactCSSTransitionGroup = require('react-addons-css-transition-group');
 var update = require('react-addons-update');
+
+
+
 
 class User extends React.Component{
     constructor(props) {
@@ -9,7 +13,7 @@ class User extends React.Component{
             users: ['Ruby','Daniel','Bill']
         }
     }
-    handleRemove(i) {[]
+    handleRemove(i) {
         // this.setState(update(this.state.users[i]))
         // this.setState(update(this.state, {users: {$splice: [[i, 1]]}}));
         this.setState({users: update(this.state.users,{$splice:[[i,1]]})});
@@ -19,7 +23,7 @@ class User extends React.Component{
     handleCreate() {
         this.setState({users: this.state.users.concat([this.refs.user.value])});
         this.refs.user.value = "";
-        // this.forceUpdate();
+        this.forceUpdate();
     }
     handleKeyDown(e) {
         e.keyCode === 13 && this.handleCreate()
@@ -30,12 +34,9 @@ class User extends React.Component{
             console.log("updated!")
         });
     }
-    componentWillUpdate(nextProp, nextState){
-        console.log(this.state);
-        console.log(nextState);
-    }
 
     render() {
+
         var users = this.state.users.map((item,i)=>{
             return (
                 <h3 key={i}>{item} <button onClick={this.handleRemove.bind(this,i)}>delete</button></h3>

@@ -54,6 +54,7 @@ class Main extends Component{
             <div>
                 <h1>Main</h1>
                 <Communicate/>
+                <Users/>
             </div>
         )
     }

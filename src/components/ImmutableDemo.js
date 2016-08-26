@@ -8,7 +8,8 @@ class User extends React.Component{
     };
 
     handleNumAdd() {
-        this.setState(update(this.state,{num: {$set: this.state.num+1}}))
+        // this.setState(update(this.state,{num: {$set: this.state.num+1}}))
+        // this.setState(Object.assign({},this.state,{num: this.state.num+1}))
     }
 
     componentWillUpdate(nextProp,nextState) {
